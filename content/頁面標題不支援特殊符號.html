@@ -116,14 +116,14 @@ init_mathjax();
             <header class="site-navbar py-4 bg-white" role="banner">
               <div class="container-fluid">
                 <div class="row align-items-center">
-                <h1>CMSimfly - 動靜皆宜的簡潔網際內容管理</h1>
+                <h1>40623155 - 協同產品設計實習</h1>
                 <div class="pl-4">
                     <form>
                     <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
                     </form>
                 </div>
                   <!-- <div class="col-11 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">CMSimfly - 動靜皆宜的簡潔網際內容管理</a></h1> 
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">40623155 - 協同產品設計實習</a></h1> 
                   </div>
                   -->
                   <div class="col-12 col-md-10 d-none d-xl-block">
@@ -136,7 +136,7 @@ init_mathjax();
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='簡介.html'>簡介</a><li><a href='目錄結構.html'>目錄結構</a><li class='has-children'><a href='頁面編輯.html'>頁面編輯</a><ul class='dropdown'><li class='has-children'><a href='插入程式碼.html'>插入程式碼</a><ul class='dropdown'><li><a href='Java 程式碼.html'>Java 程式碼</a><li><a href='Python 程式碼.html'>Python 程式碼</a><li><a href='C或C++程式碼.html'>C或C++程式碼</a><li><a href='Lua 程式碼.html'>Lua 程式碼</a><li><a href='Javascript 程式碼.html'>Javascript 程式碼</a><li><a href='Html 原始碼.html'>Html 原始碼</a></li></li></ul></ul><li><a href='網際簡報.html'>網際簡報</a><li><a href='網誌編輯.html'>網誌編輯</a><li><a href='已知錯誤.html'>已知錯誤</a></li>
+                     <li><a href='簡介.html'>簡介</a><li><a href='網際簡報.html'>網際簡報</a><li class='has-children'><a href='已知筆記.html'>已知筆記</a><ul class='dropdown'><li class='has-children'><a href='文章錯誤.html'>文章錯誤</a><ul class='dropdown'><li><a href='全部頁面會因無法正確解讀而誤刪.html'>全部頁面會因無法正確解讀而誤刪</a><li><a href='頁面標題不支援特殊符號.html'>頁面標題不支援特殊符號</a><li><a href='Video 引用不支援內部引用.html'>Video 引用不支援內部引用</a></li></ul><li><a href='推送錯誤.html'>推送錯誤</a><li><a href='可攜程式懶人包.html'>可攜程式懶人包</a><li><a href='導入ungit.html'>導入ungit</a><li><a href='網路故障排除.html'>網路故障排除</a><li><a href='Portable Python.html'>Portable Python</a></li></ul><li><a href='期中報告.html'>期中報告</a><li><a href='個人操作影片.html'>個人操作影片</a></li>
                       </ul>
                 </nav>
               </div>
@@ -147,87 +147,9 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">插入程式碼 << <a href='插入程式碼.html'>Previous</a> <a href='Python 程式碼.html'>Next</a> >> Python 程式碼<br /><h1>Java 程式碼</h1>
-<pre class="brush:java;auto-links:false;toolbar:false" contenteditable="false">import java.util.Scanner;
-
-public class Life {
-    public static void show(boolean[][] grid){
-        String s = "";
-        for(boolean[] row : grid){
-            for(boolean val : row)
-                if(val)
-                    s += "*";
-                else
-                    s += ".";
-            s += "\n";
-        }
-        System.out.println(s);
-    }
-    
-    public static boolean[][] gen(){
-        boolean[][] grid = new boolean[10][10];
-        for(int r = 0; r &lt; 10; r++)
-            for(int c = 0; c &lt; 10; c++)
-                if( Math.random() &gt; 0.7 )
-                    grid[r][c] = true;
-        return grid;
-    }
-    
-    public static void main(String[] args){
-        boolean[][] world = gen();
-        show(world);
-        System.out.println();
-        world = nextGen(world);
-        show(world);
-        Scanner s = new Scanner(System.in);
-        while(s.nextLine().length() == 0){
-            System.out.println();
-            world = nextGen(world);
-            show(world);
-            
-        }
-    }
-    
-    public static boolean[][] nextGen(boolean[][] world){
-        boolean[][] newWorld 
-            = new boolean[world.length][world[0].length];
-        int num;
-        for(int r = 0; r &lt; world.length; r++){
-            for(int c = 0; c &lt; world[0].length; c++){
-                num = numNeighbors(world, r, c);
-                if( occupiedNext(num, world[r][c]) )
-                    newWorld[r][c] = true;
-            }
-        }
-        return newWorld;
-    }
-    
-    public static boolean occupiedNext(int numNeighbors, boolean occupied){
-        if( occupied &amp;&amp; (numNeighbors == 2 || numNeighbors == 3))
-            return true;
-        else if (!occupied &amp;&amp; numNeighbors == 3)
-            return true;
-        else
-            return false;
-    }
-
-    private static int numNeighbors(boolean[][] world, int row, int col) {
-        int num = world[row][col] ? -1 : 0;
-        for(int r = row - 1; r &lt;= row + 1; r++)
-            for(int c = col - 1; c &lt;= col + 1; c++)
-                if( inbounds(world, r, c) &amp;&amp; world[r][c] )
-                    num++;
-
-        return num;
-    }
-
-    private static boolean inbounds(boolean[][] world, int r, int c) {
-        return r &gt;= 0 &amp;&amp; r &lt; world.length &amp;&amp; c &gt;= 0 &amp;&amp;
-        c &lt; world[0].length;
-    }
-
-}</pre>
-<p></p><br />插入程式碼 << <a href='插入程式碼.html'>Previous</a> <a href='Python 程式碼.html'>Next</a> >> Python 程式碼</div>
+    <div id="tipue_search_content">全部頁面會因無法正確解讀而誤刪 << <a href='全部頁面會因無法正確解讀而誤刪.html'>Previous</a> <a href='Video 引用不支援內部引用.html'>Next</a> >> Video 引用不支援內部引用<br /><h1>頁面標題不支援特殊符號</h1>
+<p>各頁面標題目前不支援特殊符號, 例如: "/", "?" 等, 若已經發生程式無法解讀頁面的情況, 只能從編輯 config/content.htm 下手, 若系統位於遠端, 則後續必須要再設法提供一個額外的編輯 config/content.htm 檔案的網際連結功能.</p>
+<br />全部頁面會因無法正確解讀而誤刪 << <a href='全部頁面會因無法正確解讀而誤刪.html'>Previous</a> <a href='Video 引用不支援內部引用.html'>Next</a> >> Video 引用不支援內部引用</div>
         
     <!-- footer -->
       <div class="container">
